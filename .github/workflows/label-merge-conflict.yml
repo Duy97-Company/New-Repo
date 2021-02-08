@@ -24,4 +24,4 @@ jobs:
         with:
           CONFLICT_LABEL_NAME: "merge conflicted"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ref: ${{matrix.branch}}
+          ref: "${{matrix.branch}}"
