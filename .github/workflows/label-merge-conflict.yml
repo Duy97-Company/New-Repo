@@ -13,7 +13,7 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
-      - uses: mschild e/auto-label-merge-conflicts@master
+      - uses: mschilde/auto-label-merge-conflicts@master
         with:
           CONFLICT_LABEL_NAME: "merge conflicted"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
