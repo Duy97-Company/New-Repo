@@ -5,12 +5,23 @@ on:
     types: [opened, synchronize, edited, reopened]
     branches:
       - develop
+  push:
+    branches:
+      - develop
 
 jobs:
   triage:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        branch: [feature/test-5, feature/test-7, feature/test-8]
     steps:
+      # - name: Retrieve un-merged remote branches
+      #   run: |
+      #     export BRANCHES=
+      #     echo "::set-env name=FOO::$FOO"
       - uses: mschilde/auto-label-merge-conflicts@master
         with:
           CONFLICT_LABEL_NAME: "merge conflicted"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{matrix.branch}}
