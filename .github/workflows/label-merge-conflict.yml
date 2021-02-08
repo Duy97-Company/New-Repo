@@ -2,6 +2,7 @@ name: "Label merge conflicts"
 
 on:
   pull_request:
+    types: [opened, synchronize, edited, reopened]
     branches:
       - develop
 
