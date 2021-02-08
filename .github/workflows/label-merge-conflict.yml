@@ -17,4 +17,4 @@ jobs:
         with:
           CONFLICT_LABEL_NAME: "merge conflicted"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ref: 'feature/test-5'
+          ref: "feature/test-5"
