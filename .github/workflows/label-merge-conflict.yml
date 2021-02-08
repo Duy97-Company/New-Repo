@@ -5,12 +5,16 @@ on:
     types: [opened, synchronize, edited, reopened]
     branches:
       - develop
+    push:
+      branches:
+        - develop
 
 jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
-      - uses: mschilde/auto-label-merge-conflicts@master
+      - uses: mschild e/auto-label-merge-conflicts@master
         with:
           CONFLICT_LABEL_NAME: "merge conflicted"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ref: 'feature/test-5'
