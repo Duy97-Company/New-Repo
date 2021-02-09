@@ -5,9 +5,9 @@ on:
     types: [opened, synchronize, edited, closed, reopened]
     branches:
       - develop
-  # push:
-  #   branches:
-  #     - develop
+  status:
+    branches:
+      - test-*
 
 jobs:
   triage:
