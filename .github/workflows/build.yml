@@ -1,0 +1,26 @@
+name: build
+
+on:
+  pull_request:
+    branches:
+      - develop
+  push:
+    branches:
+      - master
+      - develop
+      - feature/**
+      - dependabot/**
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: ['10']
+        os: [windows-latest]
+    steps:
+      - uses: mschilde/auto-label-merge-conflicts@master
+        with:
+          CONFLICT_LABEL_NAME: "merge conflicted"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # ref: "${{matrix.branch}}"
