@@ -5,9 +5,12 @@ on:
     types: [opened, synchronize, edited, closed, reopened]
     branches:
       - develop
-  status:
+  push:
     branches:
-      - test-*
+      - master
+      - develop
+      - feature/**
+      - dependabot/**
 
 jobs:
   triage:
