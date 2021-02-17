@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         node_version: ['10']
-        os: [windows-latest]
+        os: [ubuntu-latest]
     steps:
       - uses: mschilde/auto-label-merge-conflicts@master
         with:
