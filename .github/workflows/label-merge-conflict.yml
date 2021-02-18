@@ -8,8 +8,10 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          echo ${{ github.event.pull_request.merged }}
       - name: Label merge conflicts
-        if: github.event.action != 'closed' || github.event.action == 'closed' && github.event.pull_request.merged == true
+        if: github.event.action == 'closed' && github.event.pull_request.merged == true || github.event.action != 'closed'
         uses: mschilde/auto-label-merge-conflicts@master
         with:
           CONFLICT_LABEL_NAME: "merge conflicted"
