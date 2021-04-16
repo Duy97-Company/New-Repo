@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Label merge conflicts
         uses: mschilde/auto-label-merge-conflicts@master
+        run: echo "Hello $LABEL_MERGE_CONFLICT_TOKEN"
         env:
           LABEL_MERGE_CONFLICT_TOKEN: ${{ secrets.LABEL_MERGE_CONFLICT_TOKEN }}
         with:
