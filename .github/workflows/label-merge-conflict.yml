@@ -14,7 +14,7 @@ jobs:
         run: echo "Hello $LABEL_MERGE_CONFLICT_TOKEN"
         env:
           LABEL_MERGE_CONFLICT_TOKEN: ${{ secrets.LABEL_MERGE_CONFLICT_TOKEN }}
-        with:
-          CONFLICT_LABEL_NAME: "merge conflicted"
-          GITHUB_TOKEN: "$LABEL_MERGE_CONFLICT_TOKEN"
+#        with:
+#          CONFLICT_LABEL_NAME: "merge conflicted"
+#          GITHUB_TOKEN: "$LABEL_MERGE_CONFLICT_TOKEN"
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
