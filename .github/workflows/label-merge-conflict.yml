@@ -1,7 +1,7 @@
 name: "Label merge conflicts"
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, reopened, synchronize, closed]
 
 jobs:
@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Label merge conflicts
-#        uses: mschilde/auto-label-merge-conflicts@master
+        uses: mschilde/auto-label-merge-conflicts@master
         run: echo "Hello $LABEL_MERGE_CONFLICT_TOKEN"
-        env:
-          LABEL_MERGE_CONFLICT_TOKEN: ${{ secrets.LABEL_MERGE_CONFLICT_TOKEN }}
-#        with:
-#          CONFLICT_LABEL_NAME: "merge conflicted"
+#        env:
+#          LABEL_MERGE_CONFLICT_TOKEN: ${{ secrets.LABEL_MERGE_CONFLICT_TOKEN }}
+        with:
+          CONFLICT_LABEL_NAME: "merge conflicted"
 #          GITHUB_TOKEN: "$LABEL_MERGE_CONFLICT_TOKEN"
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
