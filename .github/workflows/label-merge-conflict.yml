@@ -17,4 +17,4 @@ jobs:
         with:
           CONFLICT_LABEL_NAME: "merge conflicted"
 #          GITHUB_TOKEN: "$LABEL_MERGE_CONFLICT_TOKEN"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: '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'
