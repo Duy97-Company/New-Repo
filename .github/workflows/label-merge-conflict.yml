@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get secrets
-        run: echo "Hello $LABEL_MERGE_CONFLICT_TOKEN"
+        run: echo "Hello $DEPENDABOT_TOKEN"
         env:
-          LABEL_MERGE_CONFLICT_TOKEN: ${{ secrets.LABEL_MERGE_CONFLICT_TOKEN }}
+          LABEL_MERGE_CONFLICT_TOKEN: ${{ secrets.DEPENDABOT_TOKEN }}
       - name: Label merge conflicts
         uses: mschilde/auto-label-merge-conflicts@master
         with:
