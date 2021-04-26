@@ -10,11 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get secrets
-        run: echo "Hello $DEPENDABOT_TOKEN"
+        run: echo "Hello $LABEL_MERGE_CONFLICT_TOKEN"
         env:
-          LABEL_MERGE_CONFLICT_TOKEN: ${{ secrets.DEPENDABOT_TOKEN }}
+          LABEL_MERGE_CONFLICT_TOKEN: ${{ secrets.LABEL_MERGE_CONFLICT_TOKEN }}
+
       - name: Label merge conflicts
         uses: mschilde/auto-label-merge-conflicts@master
         with:
           CONFLICT_LABEL_NAME: "merge conflicted"
-          GITHUB_TOKEN: ${{ secrets.DEPENDABOT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.LABEL_MERGE_CONFLICT_TOKEN }}
+
+      - name: Label merge conflicts with GITHUB_TOKEN
+        uses: mschilde/auto-label-merge-conflicts@master
+        with:
+          CONFLICT_LABEL_NAME: "merge conflicted"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
