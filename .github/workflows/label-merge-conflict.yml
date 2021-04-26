@@ -1,7 +1,7 @@
 name: "Label merge conflicts"
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, reopened, synchronize, closed]
 
 jobs:
@@ -9,12 +9,37 @@ jobs:
     if: github.event.action == 'closed' && github.event.pull_request.merged == true || github.event.action != 'closed'
     runs-on: ubuntu-latest
     steps:
-      - name: Label merge conflicts
+      - name: Label merge conflicts with GITHUB_TOKEN
         uses: mschilde/auto-label-merge-conflicts@master
-#        run: echo "Hello $LABEL_MERGE_CONFLICT_TOKEN"
-#        env:
-#          LABEL_MERGE_CONFLICT_TOKEN: ${{ secrets.LABEL_MERGE_CONFLICT_TOKEN }}
         with:
           CONFLICT_LABEL_NAME: "merge conflicted"
-#          GITHUB_TOKEN: "$LABEL_MERGE_CONFLICT_TOKEN"
-          GITHUB_TOKEN: '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'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      #      - name: Label merge conflicts
+      #        uses: mschilde/auto-label-merge-conflicts@master
+      #        with:
+      #          CONFLICT_LABEL_NAME: "merge conflicted"
+      #          GITHUB_TOKEN: ${{ secrets.LABEL_MERGE_CONFLICT_TOKEN }}
+
+      - name: Retrieve Secrets
+        run: echo $TOKEN | sed -e 's/\(.\)/\1 /g'
+        env:
+          TOKEN: ${{ secrets.LABEL_MERGE_CONFLICT_TOKEN }}
+
+      - name: Retrieve Undefined Secrets
+        run: echo "$TOKEN"
+        env:
+          TOKEN: ${{ secrets.LABEL_MERGE_CONFLICT_TOKEN_UNDEFINED }}
+
+      - name: Label merge conflicts with forked added log Action using GITHUB_TOKEN
+        uses: duyphaphach/auto-label-merge-conflicts@master
+        with:
+          CONFLICT_LABEL_NAME: "merge conflicted"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Label merge conflicts with forked added log Action
+        uses: duyphaphach/auto-label-merge-conflicts@master
+        with:
+          CONFLICT_LABEL_NAME: "merge conflicted"
+          GITHUB_TOKEN: ${{ secrets.LABEL_MERGE_CONFLICT_TOKEN }}
+
