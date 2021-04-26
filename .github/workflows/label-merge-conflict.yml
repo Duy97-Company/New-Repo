@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Label merge conflicts with GITHUB_TOKEN
-        uses: mschilde/auto-label-merge-conflicts@master
+        uses: duyphaphach/auto-label-merge-conflicts@master
         with:
           CONFLICT_LABEL_NAME: "merge conflicted"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
